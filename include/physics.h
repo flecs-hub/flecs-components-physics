@@ -34,6 +34,13 @@ void EcsComponentsPhysics(
     int flags,
     void *handles_out);
 
+#define EcsComponentsPhysics_DeclareHandles(handles)\
+    EcsDeclareHandle(handles, Speed);\
+    EcsDeclareHandle(handles, Velocity2D);\
+    EcsDeclareHandle(handles, Velocity3D);\
+    EcsDeclareHandle(handles, AngularSpeed);\
+    EcsDeclareHandle(handles, AngularVelocity);
+
 #ifdef __cplusplus
 }
 #endif
