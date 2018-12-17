@@ -1,7 +1,7 @@
 #ifndef REFLECS_COMPONENTS_PHYSICS_H
 #define REFLECS_COMPONENTS_PHYSICS_H
 
-#include <reflecs/components/transform/transform.h>
+#include "prebaked.h"
 
 #ifdef __cplusplus
 extern "C" {
