@@ -2,7 +2,6 @@
     "id":"reflecs.components.physics",
     "type":"package",
     "value": {
-        "managed": false,
         "use": [
             "reflecs",
             "reflecs.components.transform"
