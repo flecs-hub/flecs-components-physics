@@ -11,18 +11,18 @@ typedef struct EcsSpeed {
     float value;
 } EcsSpeed;
 
-typedef EcsVector2D EcsVelocity2D;
+typedef EcsVec2 EcsVelocity2D;
 
-typedef EcsVector3D EcsVelocity3D;
+typedef EcsVec3 EcsVelocity3D;
 
 typedef struct EcsAngularSpeed {
     float value;
 } EcsAngularSpeed;
 
-typedef EcsVector3D EcsAngularVelocity;
+typedef EcsVec3 EcsAngularVelocity;
 
-typedef EcsVector4D EcsAABB;
-typedef EcsVector2D EcsPoint2D;
+typedef EcsVec4 EcsAABB;
+typedef EcsVec2 EcsPoint2D;
 
 typedef struct EcsCircle2DCollider {
     float radius;
