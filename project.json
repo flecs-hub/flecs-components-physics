@@ -2,6 +2,8 @@
     "id":"reflecs.components.physics",
     "type":"package",
     "value": {
+        "author": "Sander Mertens",
+        "description": "Physics components for reflecs",
         "use": [
             "reflecs",
             "reflecs.components.transform"
