@@ -20,6 +20,7 @@
 /* Headers of public dependencies */
 #include <reflecs>
 #include <reflecs.components.transform>
+#include <reflecs.components.geometry>
 
 /* Headers of private dependencies */
 #ifdef REFLECS_COMPONENTS_PHYSICS_IMPL

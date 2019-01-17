@@ -18,7 +18,14 @@ void EcsComponentsPhysics(
     handles->AngularSpeed = EcsAngularSpeed_h;
 
     if (do_2d) {
+        ECS_TAG(world, EcsCollider);
+        ECS_COMPONENT(world, EcsPolygonCollider);
+        ECS_COMPONENT(world, EcsCircleCollider);
         ECS_COMPONENT(world, EcsVelocity2D);
+
+        handles->Collider = EcsCollider_h;
+        handles->PolygonCollider = EcsPolygonCollider_h;
+        handles->CircleCollider = EcsCircleCollider_h;
         handles->Velocity2D = EcsVelocity2D_h;
     }
 

@@ -24,21 +24,25 @@ typedef EcsVec3 EcsAngularVelocity;
 typedef EcsVec4 EcsAABB;
 typedef EcsVec2 EcsPoint2D;
 
-typedef struct EcsCircle2DCollider {
+typedef struct EcsCircleCollider {
+    EcsPosition2D position;
     float radius;
 } EcsCircleCollider;
 
-typedef struct EcsPolygon2DCollider {
+typedef struct EcsPolygonCollider {
     EcsPoint2D *points;
     int8_t point_count; //MAX 128
 } EcsPolygonCollider;
 
 typedef struct EcsComponentsPhysicsHandles {
-    EcsHandle Speed;
-    EcsHandle Velocity2D;
-    EcsHandle Velocity3D;
-    EcsHandle AngularSpeed;
-    EcsHandle AngularVelocity;
+    EcsEntity Speed;
+    EcsEntity Velocity2D;
+    EcsEntity Velocity3D;
+    EcsEntity AngularSpeed;
+    EcsEntity AngularVelocity;
+    EcsEntity Collider;
+    EcsEntity PolygonCollider;
+    EcsEntity CircleCollider;
 } EcsComponentsPhysicsHandles;
 
 void EcsComponentsPhysics(
@@ -51,7 +55,10 @@ void EcsComponentsPhysics(
     EcsDeclareHandle(handles, Velocity2D);\
     EcsDeclareHandle(handles, Velocity3D);\
     EcsDeclareHandle(handles, AngularSpeed);\
-    EcsDeclareHandle(handles, AngularVelocity);
+    EcsDeclareHandle(handles, AngularVelocity);\
+    EcsDeclareHandle(handles, Collider);\
+    EcsDeclareHandle(handles, PolygonCollider);\
+    EcsDeclareHandle(handles, CircleCollider);
 
 #ifdef __cplusplus
 }

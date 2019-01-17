@@ -6,7 +6,8 @@
         "description": "Physics components for reflecs",
         "use": [
             "reflecs",
-            "reflecs.components.transform"
+            "reflecs.components.transform",
+            "reflecs.components.geometry"
         ]
     }
 }
