@@ -19,13 +19,19 @@ void EcsComponentsPhysics(
 
     if (do_2d) {
         ECS_TAG(world, EcsCollider);
-        ECS_COMPONENT(world, EcsPolygonCollider);
+        ECS_COMPONENT(world, EcsPolygon8Collider);
         ECS_COMPONENT(world, EcsCircleCollider);
+        ECS_COMPONENT(world, EcsCollision2D);
+        ECS_COMPONENT(world, EcsPolygon8ColliderWorld);
+        ECS_COMPONENT(world, EcsCircleColliderWorld);
         ECS_COMPONENT(world, EcsVelocity2D);
 
         handles->Collider = EcsCollider_h;
-        handles->PolygonCollider = EcsPolygonCollider_h;
+        handles->Collision2D = EcsCollision2D_h;
+        handles->Polygon8Collider = EcsPolygon8Collider_h;
         handles->CircleCollider = EcsCircleCollider_h;
+        handles->Polygon8ColliderWorld = EcsPolygon8ColliderWorld_h;
+        handles->CircleColliderWorld = EcsCircleColliderWorld_h;
         handles->Velocity2D = EcsVelocity2D_h;
     }
 
