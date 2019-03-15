@@ -1,5 +1,5 @@
-#ifndef REFLECS_COMPONENTS_PHYSICS_H
-#define REFLECS_COMPONENTS_PHYSICS_H
+#ifndef FLECS_COMPONENTS_PHYSICS_H
+#define FLECS_COMPONENTS_PHYSICS_H
 
 #include "bake_config.h"
 
@@ -45,17 +45,17 @@ typedef EcsCircleCollider EcsCircleColliderWorld;
 typedef EcsPolygon8Collider EcsPolygon8ColliderWorld;
 
 typedef struct EcsComponentsPhysicsHandles {
-    EcsEntity Speed;
-    EcsEntity Velocity2D;
-    EcsEntity Velocity3D;
-    EcsEntity AngularSpeed;
-    EcsEntity AngularVelocity;
-    EcsEntity Collider;
-    EcsEntity Collision2D;
-    EcsEntity Polygon8Collider;
-    EcsEntity CircleCollider;
-    EcsEntity Polygon8ColliderWorld;
-    EcsEntity CircleColliderWorld;
+    ECS_DECLARE_COMPONENT(EcsSpeed);
+    ECS_DECLARE_COMPONENT(EcsVelocity2D);
+    ECS_DECLARE_COMPONENT(EcsVelocity3D);
+    ECS_DECLARE_COMPONENT(EcsAngularSpeed);
+    ECS_DECLARE_COMPONENT(EcsAngularVelocity);
+    ECS_DECLARE_COMPONENT(EcsCollider);
+    ECS_DECLARE_COMPONENT(EcsCollision2D);
+    ECS_DECLARE_COMPONENT(EcsPolygon8Collider);
+    ECS_DECLARE_COMPONENT(EcsCircleCollider);
+    ECS_DECLARE_COMPONENT(EcsPolygon8ColliderWorld);
+    ECS_DECLARE_COMPONENT(EcsCircleColliderWorld);
 } EcsComponentsPhysicsHandles;
 
 void EcsComponentsPhysics(
@@ -64,14 +64,14 @@ void EcsComponentsPhysics(
     void *handles_out);
 
 #define EcsComponentsPhysics_DeclareHandles(handles)\
-    EcsDeclareHandle(handles, Speed);\
-    EcsDeclareHandle(handles, Velocity2D);\
-    EcsDeclareHandle(handles, Velocity3D);\
-    EcsDeclareHandle(handles, AngularSpeed);\
-    EcsDeclareHandle(handles, AngularVelocity);\
-    EcsDeclareHandle(handles, Collider);\
-    EcsDeclareHandle(handles, Polygon8Collider);\
-    EcsDeclareHandle(handles, CircleCollider);
+    ECS_IMPORT_COMPONENT(handles, Speed);\
+    ECS_IMPORT_COMPONENT(handles, Velocity2D);\
+    ECS_IMPORT_COMPONENT(handles, Velocity3D);\
+    ECS_IMPORT_COMPONENT(handles, AngularSpeed);\
+    ECS_IMPORT_COMPONENT(handles, AngularVelocity);\
+    ECS_IMPORT_COMPONENT(handles, Collider);\
+    ECS_IMPORT_COMPONENT(handles, Polygon8Collider);\
+    ECS_IMPORT_COMPONENT(handles, CircleCollider);
 
 #ifdef __cplusplus
 }

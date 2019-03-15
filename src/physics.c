@@ -12,10 +12,10 @@ void EcsComponentsPhysics(
     memset(handles, 0, sizeof(EcsComponentsPhysicsHandles));
 
     ECS_COMPONENT(world, EcsSpeed);
-    handles->Speed = EcsSpeed_h;
+    ECS_SET_COMPONENT(handles, EcsSpeed);
 
     ECS_COMPONENT(world, EcsAngularSpeed);
-    handles->AngularSpeed = EcsAngularSpeed_h;
+    ECS_SET_COMPONENT(handles, EcsAngularSpeed);
 
     if (do_2d) {
         ECS_TAG(world, EcsCollider);
@@ -26,19 +26,20 @@ void EcsComponentsPhysics(
         ECS_COMPONENT(world, EcsCircleColliderWorld);
         ECS_COMPONENT(world, EcsVelocity2D);
 
-        handles->Collider = EcsCollider_h;
-        handles->Collision2D = EcsCollision2D_h;
-        handles->Polygon8Collider = EcsPolygon8Collider_h;
-        handles->CircleCollider = EcsCircleCollider_h;
-        handles->Polygon8ColliderWorld = EcsPolygon8ColliderWorld_h;
-        handles->CircleColliderWorld = EcsCircleColliderWorld_h;
-        handles->Velocity2D = EcsVelocity2D_h;
+        ECS_SET_COMPONENT(handles, EcsCollider);
+        ECS_SET_COMPONENT(handles, EcsCollision2D);
+        ECS_SET_COMPONENT(handles, EcsPolygon8Collider);
+        ECS_SET_COMPONENT(handles, EcsCircleCollider);
+        ECS_SET_COMPONENT(handles, EcsPolygon8ColliderWorld);
+        ECS_SET_COMPONENT(handles, EcsCircleColliderWorld);
+        ECS_SET_COMPONENT(handles, EcsVelocity2D);
     }
 
     if (do_3d) {
         ECS_COMPONENT(world, EcsVelocity3D);
         ECS_COMPONENT(world, EcsAngularVelocity);
-        handles->Velocity3D = EcsVelocity3D_h;
-        handles->AngularVelocity = EcsAngularVelocity_h;
+        
+        ECS_SET_COMPONENT(handles, EcsVelocity3D);
+        ECS_SET_COMPONENT(handles, EcsAngularVelocity);
     }
 }

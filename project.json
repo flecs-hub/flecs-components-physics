@@ -1,13 +1,13 @@
 {
-    "id":"reflecs.components.physics",
+    "id":"flecs.components.physics",
     "type":"package",
     "value": {
         "author": "Sander Mertens",
-        "description": "Physics components for reflecs",
+        "description": "Physics components for flecs",
         "use": [
-            "reflecs",
-            "reflecs.components.transform",
-            "reflecs.components.geometry"
+            "flecs",
+            "flecs.components.transform",
+            "flecs.components.geometry"
         ]
     }
 }
