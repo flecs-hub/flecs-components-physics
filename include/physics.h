@@ -63,15 +63,15 @@ void EcsComponentsPhysics(
     int flags,
     void *handles_out);
 
-#define EcsComponentsPhysics_DeclareHandles(handles)\
-    ECS_IMPORT_COMPONENT(handles, Speed);\
-    ECS_IMPORT_COMPONENT(handles, Velocity2D);\
-    ECS_IMPORT_COMPONENT(handles, Velocity3D);\
-    ECS_IMPORT_COMPONENT(handles, AngularSpeed);\
-    ECS_IMPORT_COMPONENT(handles, AngularVelocity);\
-    ECS_IMPORT_COMPONENT(handles, Collider);\
-    ECS_IMPORT_COMPONENT(handles, Polygon8Collider);\
-    ECS_IMPORT_COMPONENT(handles, CircleCollider);
+#define EcsComponentsPhysics_ImportHandles(handles)\
+    ECS_IMPORT_COMPONENT(handles, EcsSpeed);\
+    ECS_IMPORT_COMPONENT(handles, EcsVelocity2D);\
+    ECS_IMPORT_COMPONENT(handles, EcsVelocity3D);\
+    ECS_IMPORT_COMPONENT(handles, EcsAngularSpeed);\
+    ECS_IMPORT_COMPONENT(handles, EcsAngularVelocity);\
+    ECS_IMPORT_COMPONENT(handles, EcsCollider);\
+    ECS_IMPORT_COMPONENT(handles, EcsPolygon8Collider);\
+    ECS_IMPORT_COMPONENT(handles, EcsCircleCollider);
 
 #ifdef __cplusplus
 }
