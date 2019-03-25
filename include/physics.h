@@ -27,8 +27,8 @@ typedef EcsVec2 EcsPoint2D;
 typedef struct EcsCollision2D {
     EcsVec2 normal;
     float distance;
-    EcsEntity entity_1;
-    EcsEntity entity_2;
+    ecs_entity_t entity_1;
+    ecs_entity_t entity_2;
 } EcsCollision2D;
 
 typedef struct EcsCircleCollider {
