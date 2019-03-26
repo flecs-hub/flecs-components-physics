@@ -26,7 +26,7 @@ void EcsComponentsPhysics(
         ECS_COMPONENT(world, EcsCircleColliderWorld);
         ECS_COMPONENT(world, EcsVelocity2D);
 
-        ECS_SET_COMPONENT(handles, EcsCollider);
+        ECS_SET_ENTITY(handles, EcsCollider);
         ECS_SET_COMPONENT(handles, EcsCollision2D);
         ECS_SET_COMPONENT(handles, EcsPolygon8Collider);
         ECS_SET_COMPONENT(handles, EcsCircleCollider);

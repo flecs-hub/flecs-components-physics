@@ -50,7 +50,7 @@ typedef struct EcsComponentsPhysicsHandles {
     ECS_DECLARE_COMPONENT(EcsVelocity3D);
     ECS_DECLARE_COMPONENT(EcsAngularSpeed);
     ECS_DECLARE_COMPONENT(EcsAngularVelocity);
-    ECS_DECLARE_COMPONENT(EcsCollider);
+    ECS_DECLARE_ENTITY(EcsCollider);
     ECS_DECLARE_COMPONENT(EcsCollision2D);
     ECS_DECLARE_COMPONENT(EcsPolygon8Collider);
     ECS_DECLARE_COMPONENT(EcsCircleCollider);
@@ -69,7 +69,7 @@ void EcsComponentsPhysics(
     ECS_IMPORT_COMPONENT(handles, EcsVelocity3D);\
     ECS_IMPORT_COMPONENT(handles, EcsAngularSpeed);\
     ECS_IMPORT_COMPONENT(handles, EcsAngularVelocity);\
-    ECS_IMPORT_COMPONENT(handles, EcsCollider);\
+    ECS_IMPORT_ENTITY(handles, EcsCollider);\
     ECS_IMPORT_COMPONENT(handles, EcsPolygon8Collider);\
     ECS_IMPORT_COMPONENT(handles, EcsCircleCollider);
 
