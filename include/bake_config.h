@@ -17,6 +17,10 @@
 #ifndef FLECS_COMPONENTS_PHYSICS_BAKE_CONFIG_H
 #define FLECS_COMPONENTS_PHYSICS_BAKE_CONFIG_H
 
+/* Generated includes are specific to the bake environment. If a project is not
+ * built with bake, it will have to provide alternative methods for including
+ * its dependencies. */
+#ifdef __BAKE__
 /* Headers of public dependencies */
 #include <flecs>
 #include <flecs.components.transform>
@@ -26,16 +30,21 @@
 #ifdef FLECS_COMPONENTS_PHYSICS_IMPL
 /* No dependencies */
 #endif
+#endif
 
 /* Convenience macro for exporting symbols */
-#if FLECS_COMPONENTS_PHYSICS_IMPL && defined _MSC_VER
-#define FLECS_COMPONENTS_PHYSICS_EXPORT __declspec(dllexport)
-#elif FLECS_COMPONENTS_PHYSICS_IMPL
-#define FLECS_COMPONENTS_PHYSICS_EXPORT __attribute__((__visibility__("default")))
-#elif defined _MSC_VER
-#define FLECS_COMPONENTS_PHYSICS_EXPORT __declspec(dllimport)
+#ifndef FLECS_COMPONENTS_PHYSICS_STATIC
+  #if FLECS_COMPONENTS_PHYSICS_IMPL && defined _MSC_VER
+    #define FLECS_COMPONENTS_PHYSICS_EXPORT __declspec(dllexport)
+  #elif FLECS_COMPONENTS_PHYSICS_IMPL
+    #define FLECS_COMPONENTS_PHYSICS_EXPORT __attribute__((__visibility__("default")))
+  #elif defined _MSC_VER
+    #define FLECS_COMPONENTS_PHYSICS_EXPORT __declspec(dllimport)
+  #else
+    #define FLECS_COMPONENTS_PHYSICS_EXPORT
+  #endif
 #else
-#define FLECS_COMPONENTS_PHYSICS_EXPORT
+  #define FLECS_COMPONENTS_PHYSICS_EXPORT
 #endif
 
 #endif
