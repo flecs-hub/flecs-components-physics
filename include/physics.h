@@ -22,7 +22,6 @@ typedef struct EcsAngularSpeed {
 typedef EcsVec3 EcsAngularVelocity;
 
 typedef EcsVec4 EcsAABB;
-typedef EcsVec2 EcsPoint2D;
 
 typedef struct EcsCollision2D {
     EcsVec2 normal;
