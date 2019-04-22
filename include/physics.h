@@ -43,7 +43,7 @@ typedef struct EcsPolygon8Collider {
 typedef EcsCircleCollider EcsCircleColliderWorld;
 typedef EcsPolygon8Collider EcsPolygon8ColliderWorld;
 
-typedef struct EcsComponentsPhysicsHandles {
+typedef struct FlecsComponentsPhysics {
     ECS_DECLARE_COMPONENT(EcsSpeed);
     ECS_DECLARE_COMPONENT(EcsVelocity2D);
     ECS_DECLARE_COMPONENT(EcsVelocity3D);
@@ -55,14 +55,13 @@ typedef struct EcsComponentsPhysicsHandles {
     ECS_DECLARE_COMPONENT(EcsCircleCollider);
     ECS_DECLARE_COMPONENT(EcsPolygon8ColliderWorld);
     ECS_DECLARE_COMPONENT(EcsCircleColliderWorld);
-} EcsComponentsPhysicsHandles;
+} FlecsComponentsPhysics;
 
-void EcsComponentsPhysics(
+void FlecsComponentsPhysicsImport(
     ecs_world_t *world,
-    int flags,
-    void *handles_out);
+    int flags);
 
-#define EcsComponentsPhysics_ImportHandles(handles)\
+#define FlecsComponentsPhysicsImportHandles(handles)\
     ECS_IMPORT_COMPONENT(handles, EcsSpeed);\
     ECS_IMPORT_COMPONENT(handles, EcsVelocity2D);\
     ECS_IMPORT_COMPONENT(handles, EcsVelocity3D);\

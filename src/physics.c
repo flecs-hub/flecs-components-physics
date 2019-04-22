@@ -1,15 +1,14 @@
 #include <include/physics.h>
 #include <string.h>
 
-void EcsComponentsPhysics(
+void FlecsComponentsPhysicsImport(
     ecs_world_t *world,
-    int flags,
-    void *handles_out)
+    int flags)
 {
     bool do_2d = !flags || flags & ECS_2D;
     bool do_3d = !flags || flags & ECS_3D;
-    EcsComponentsPhysicsHandles *handles = handles_out;
-    memset(handles, 0, sizeof(EcsComponentsPhysicsHandles));
+
+    ECS_MODULE(world, FlecsComponentsPhysics);
 
     ECS_COMPONENT(world, EcsSpeed);
     ECS_SET_COMPONENT(handles, EcsSpeed);
