@@ -21,6 +21,12 @@ typedef struct EcsAngularSpeed {
 
 typedef EcsVec3 EcsAngularVelocity;
 
+typedef float EcsBounciness;
+
+typedef struct EcsDrag {
+    float c;
+} EcsDrag;
+
 typedef EcsVec4 EcsAABB;
 
 typedef struct EcsCollision2D {
@@ -49,7 +55,9 @@ typedef struct FlecsComponentsPhysics {
     ECS_DECLARE_COMPONENT(EcsVelocity3D);
     ECS_DECLARE_COMPONENT(EcsAngularSpeed);
     ECS_DECLARE_COMPONENT(EcsAngularVelocity);
+    ECS_DECLARE_COMPONENT(EcsBounciness);
     ECS_DECLARE_ENTITY(EcsCollider);
+    ECS_DECLARE_ENTITY(EcsRigidBody);
     ECS_DECLARE_COMPONENT(EcsCollision2D);
     ECS_DECLARE_COMPONENT(EcsPolygon8Collider);
     ECS_DECLARE_COMPONENT(EcsCircleCollider);
@@ -67,7 +75,9 @@ void FlecsComponentsPhysicsImport(
     ECS_IMPORT_COMPONENT(handles, EcsVelocity3D);\
     ECS_IMPORT_COMPONENT(handles, EcsAngularSpeed);\
     ECS_IMPORT_COMPONENT(handles, EcsAngularVelocity);\
+    ECS_IMPORT_COMPONENT(handles, EcsBounciness);\
     ECS_IMPORT_ENTITY(handles, EcsCollider);\
+    ECS_IMPORT_ENTITY(handles, EcsRigidBody);\
     ECS_IMPORT_COMPONENT(handles, EcsPolygon8Collider);\
     ECS_IMPORT_COMPONENT(handles, EcsCircleCollider);
 
