@@ -23,6 +23,7 @@ void FlecsComponentsPhysicsImport(
         ECS_COMPONENT(world, EcsSpeed);
         ECS_COMPONENT(world, EcsAngularSpeed);
         ECS_COMPONENT(world, EcsBounciness);
+        ECS_COMPONENT(world, EcsFriction);
 
         ECS_SET_ENTITY(handles, EcsCollider);
         ECS_SET_ENTITY(handles, EcsRigidBody);
@@ -35,6 +36,7 @@ void FlecsComponentsPhysicsImport(
         ECS_SET_COMPONENT(handles, EcsSpeed);
         ECS_SET_COMPONENT(handles, EcsAngularSpeed);
         ECS_SET_COMPONENT(handles, EcsBounciness); 
+        ECS_SET_COMPONENT(handles, EcsFriction);
     }
 
     if (do_3d) {
