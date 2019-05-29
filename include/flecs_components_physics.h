@@ -1,7 +1,7 @@
 #ifndef FLECS_COMPONENTS_PHYSICS_H
 #define FLECS_COMPONENTS_PHYSICS_H
 
-#include "bake_config.h"
+#include <flecs-components-physics/bake_config.h>
 
 #ifdef __cplusplus
 extern "C" {

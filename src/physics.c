@@ -1,4 +1,4 @@
-#include <include/physics.h>
+#include <flecs_components_physics.h>
 
 #include <string.h>
 
