@@ -25,25 +25,25 @@ void FlecsComponentsPhysicsImport(
         ECS_COMPONENT(world, EcsBounciness);
         ECS_COMPONENT(world, EcsFriction);
 
-        ECS_SET_ENTITY(handles, EcsCollider);
-        ECS_SET_ENTITY(handles, EcsRigidBody);
-        ECS_SET_COMPONENT(handles, EcsCollision2D);
-        ECS_SET_COMPONENT(handles, EcsPolygon8Collider);
-        ECS_SET_COMPONENT(handles, EcsCircleCollider);
-        ECS_SET_COMPONENT(handles, EcsPolygon8ColliderWorld);
-        ECS_SET_COMPONENT(handles, EcsCircleColliderWorld);
-        ECS_SET_COMPONENT(handles, EcsVelocity2D);
-        ECS_SET_COMPONENT(handles, EcsSpeed);
-        ECS_SET_COMPONENT(handles, EcsAngularSpeed);
-        ECS_SET_COMPONENT(handles, EcsBounciness); 
-        ECS_SET_COMPONENT(handles, EcsFriction);
+        ECS_SET_ENTITY(EcsCollider);
+        ECS_SET_ENTITY(EcsRigidBody);
+        ECS_SET_COMPONENT(EcsCollision2D);
+        ECS_SET_COMPONENT(EcsPolygon8Collider);
+        ECS_SET_COMPONENT(EcsCircleCollider);
+        ECS_SET_COMPONENT(EcsPolygon8ColliderWorld);
+        ECS_SET_COMPONENT(EcsCircleColliderWorld);
+        ECS_SET_COMPONENT(EcsVelocity2D);
+        ECS_SET_COMPONENT(EcsSpeed);
+        ECS_SET_COMPONENT(EcsAngularSpeed);
+        ECS_SET_COMPONENT(EcsBounciness); 
+        ECS_SET_COMPONENT(EcsFriction);
     }
 
     if (do_3d) {
         ECS_COMPONENT(world, EcsVelocity3D);
         ECS_COMPONENT(world, EcsAngularVelocity);
         
-        ECS_SET_COMPONENT(handles, EcsVelocity3D);
-        ECS_SET_COMPONENT(handles, EcsAngularVelocity);
+        ECS_SET_COMPONENT(EcsVelocity3D);
+        ECS_SET_COMPONENT(EcsAngularVelocity);
     }
 }
