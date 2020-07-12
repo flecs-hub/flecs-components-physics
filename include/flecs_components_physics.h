@@ -7,60 +7,71 @@
 extern "C" {
 #endif
 
-typedef struct EcsSpeed {
+ECS_STRUCT(EcsVelocity2, {
+    float x;
+    float y;
+});
+
+ECS_STRUCT(EcsVelocity3, {
+    float x;
+    float y;
+    float z;
+});
+
+ECS_STRUCT(EcsAngularSpeed, {
     float value;
-} EcsSpeed;
+});
 
-typedef EcsVec2 EcsVelocity2D;
+ECS_STRUCT(EcsAngularVelocity, {
+    float x;
+    float y;
+    float z;
+});
 
-typedef EcsVec3 EcsVelocity3D;
-
-typedef struct EcsAngularSpeed {
+ECS_STRUCT(EcsBounciness, {
     float value;
-} EcsAngularSpeed;
+});
 
-typedef EcsVec3 EcsAngularVelocity;
+ECS_STRUCT(EcsFriction, {
+    float value;
+});
 
-typedef float EcsBounciness;
-typedef float EcsFriction;
+ECS_STRUCT(EcsAABB, {
+    float x;
+    float y;
+    float z;
+    float w;
+});
 
-typedef struct EcsDrag {
-    float c;
-} EcsDrag;
-
-typedef EcsVec4 EcsAABB;
-
-typedef struct EcsCollision2D {
-    EcsVec2 normal;
+ECS_STRUCT(EcsCollision2, {
+    ecs_vert2_t normal;
     float distance;
     ecs_entity_t entity_1;
     ecs_entity_t entity_2;
-} EcsCollision2D;
+});
 
-typedef struct EcsCircleCollider {
-    EcsPosition2D position;
+ECS_STRUCT(EcsCircleCollider, {
+    ecs_vert2_t position;
     float radius;
-} EcsCircleCollider;
+});
 
-typedef struct EcsPolygon8Collider {
-    int8_t point_count;
-    EcsPoint2D points[8];
-} EcsPolygon8Collider;
+ECS_STRUCT(EcsPolygon8Collider, {
+    ecs_poly8_t value;
+});
 
 typedef EcsCircleCollider EcsCircleColliderWorld;
 typedef EcsPolygon8Collider EcsPolygon8ColliderWorld;
 
 typedef struct FlecsComponentsPhysics {
-    ECS_DECLARE_COMPONENT(EcsSpeed);
-    ECS_DECLARE_COMPONENT(EcsVelocity2D);
-    ECS_DECLARE_COMPONENT(EcsVelocity3D);
+    ECS_DECLARE_ENTITY(EcsCollider);
+    ECS_DECLARE_ENTITY(EcsRigidBody);    
+    ECS_DECLARE_COMPONENT(EcsVelocity2);
+    ECS_DECLARE_COMPONENT(EcsVelocity3);
     ECS_DECLARE_COMPONENT(EcsAngularSpeed);
     ECS_DECLARE_COMPONENT(EcsAngularVelocity);
     ECS_DECLARE_COMPONENT(EcsBounciness);
     ECS_DECLARE_COMPONENT(EcsFriction);
-    ECS_DECLARE_ENTITY(EcsCollider);
-    ECS_DECLARE_ENTITY(EcsRigidBody);
-    ECS_DECLARE_COMPONENT(EcsCollision2D);
+    ECS_DECLARE_COMPONENT(EcsCollision2);
     ECS_DECLARE_COMPONENT(EcsPolygon8Collider);
     ECS_DECLARE_COMPONENT(EcsCircleCollider);
     ECS_DECLARE_COMPONENT(EcsPolygon8ColliderWorld);
@@ -68,21 +79,22 @@ typedef struct FlecsComponentsPhysics {
 } FlecsComponentsPhysics;
 
 void FlecsComponentsPhysicsImport(
-    ecs_world_t *world,
-    int flags);
+    ecs_world_t *world);
 
 #define FlecsComponentsPhysicsImportHandles(handles)\
-    ECS_IMPORT_COMPONENT(handles, EcsSpeed);\
-    ECS_IMPORT_COMPONENT(handles, EcsVelocity2D);\
-    ECS_IMPORT_COMPONENT(handles, EcsVelocity3D);\
+    ECS_IMPORT_ENTITY(handles, EcsCollider);\
+    ECS_IMPORT_ENTITY(handles, EcsRigidBody);\
+    ECS_IMPORT_COMPONENT(handles, EcsVelocity2);\
+    ECS_IMPORT_COMPONENT(handles, EcsVelocity3);\
     ECS_IMPORT_COMPONENT(handles, EcsAngularSpeed);\
     ECS_IMPORT_COMPONENT(handles, EcsAngularVelocity);\
     ECS_IMPORT_COMPONENT(handles, EcsBounciness);\
     ECS_IMPORT_COMPONENT(handles, EcsFriction);\
-    ECS_IMPORT_ENTITY(handles, EcsCollider);\
-    ECS_IMPORT_ENTITY(handles, EcsRigidBody);\
+    ECS_IMPORT_COMPONENT(handles, EcsCollision2);\
     ECS_IMPORT_COMPONENT(handles, EcsPolygon8Collider);\
-    ECS_IMPORT_COMPONENT(handles, EcsCircleCollider);
+    ECS_IMPORT_COMPONENT(handles, EcsCircleCollider);\
+    ECS_IMPORT_COMPONENT(handles, EcsPolygon8ColliderWorld);\
+    ECS_IMPORT_COMPONENT(handles, EcsCircleColliderWorld);
 
 #ifdef __cplusplus
 }

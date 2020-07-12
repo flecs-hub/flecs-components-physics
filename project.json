@@ -6,8 +6,8 @@
         "description": "Physics components for flecs",
         "use": [
             "flecs",
-            "flecs.components.transform",
-            "flecs.components.geometry"
+            "flecs.meta",
+            "flecs.components.graphics"
         ]
     }
 }
