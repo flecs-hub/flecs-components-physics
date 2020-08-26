@@ -10,6 +10,8 @@ void FlecsComponentsPhysicsImport(
     ECS_IMPORT(world, FlecsMeta);
     ECS_IMPORT(world, FlecsComponentsGraphics);
 
+    ecs_set_name_prefix(world, "Ecs");
+
     ECS_TAG(world, EcsCollider);
     ECS_TAG(world, EcsRigidBody);
     ECS_META(world, EcsVelocity2);
