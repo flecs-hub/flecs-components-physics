@@ -100,4 +100,48 @@ void FlecsComponentsPhysicsImport(
 }
 #endif
 
+#ifdef __cplusplus
+
+namespace flecs {
+namespace components {
+
+class physics : FlecsComponentsPhysics {
+public:
+    using Velocity2 = EcsVelocity2;
+    using Velocity3 = EcsVelocity3;
+    using AngularSpeed = EcsAngularSpeed;
+    using AngularVelocity = EcsAngularVelocity;
+    using Bounciness = EcsBounciness;
+    using Friction = EcsFriction;
+    using Collision2 = EcsCollision2;
+    using Polygon8Collider = EcsPolygon8Collider;
+    using CircleCollider = EcsCircleCollider;
+
+    struct Polygon8ColliderWorld : EcsPolygon8ColliderWorld { };
+    struct CircleColliderWorld : EcsCircleColliderWorld { };
+
+    physics(flecs::world& ecs) {
+        FlecsComponentsPhysicsImport(ecs.c_ptr());
+
+        ecs.module<flecs::components::physics>();
+
+        ecs.component<Velocity2>("flecs::components::physics::Velocity2");
+        ecs.component<Velocity3>("flecs::components::physics::Velocity3");
+        ecs.component<AngularSpeed>("flecs::components::physics::AngularSpeed");
+        ecs.component<AngularVelocity>("flecs::components::physics::AngularVelocity");
+        ecs.component<Bounciness>("flecs::components::physics::Bounciness");
+        ecs.component<Friction>("flecs::components::physics::Friction");
+        ecs.component<Collision2>("flecs::components::physics::Collision2");
+        ecs.component<Polygon8Collider>("flecs::components::physics::Polygon8Collider");
+        ecs.component<CircleCollider>("flecs::components::physics::CircleCollider");
+        ecs.component<Polygon8ColliderWorld>("flecs::components::physics::Polygon8ColliderWorld");
+        ecs.component<CircleColliderWorld>("flecs::components::physics::CircleColliderWorld");
+    }
+};
+
+}
+}
+
+#endif
+
 #endif
