@@ -36,32 +36,6 @@ ECS_STRUCT(EcsFriction, {
     float value;
 });
 
-ECS_STRUCT(EcsAABB, {
-    float x;
-    float y;
-    float z;
-    float w;
-});
-
-ECS_STRUCT(EcsCollision2, {
-    ecs_vert2_t normal;
-    float distance;
-    ecs_entity_t entity_1;
-    ecs_entity_t entity_2;
-});
-
-ECS_STRUCT(EcsCircleCollider, {
-    ecs_vert2_t position;
-    float radius;
-});
-
-ECS_STRUCT(EcsPolygon8Collider, {
-    ecs_poly8_t value;
-});
-
-typedef EcsCircleCollider EcsCircleColliderWorld;
-typedef EcsPolygon8Collider EcsPolygon8ColliderWorld;
-
 typedef struct FlecsComponentsPhysics {
     ECS_DECLARE_ENTITY(EcsCollider);
     ECS_DECLARE_ENTITY(EcsRigidBody);    
@@ -71,11 +45,6 @@ typedef struct FlecsComponentsPhysics {
     ECS_DECLARE_COMPONENT(EcsAngularVelocity);
     ECS_DECLARE_COMPONENT(EcsBounciness);
     ECS_DECLARE_COMPONENT(EcsFriction);
-    ECS_DECLARE_COMPONENT(EcsCollision2);
-    ECS_DECLARE_COMPONENT(EcsPolygon8Collider);
-    ECS_DECLARE_COMPONENT(EcsCircleCollider);
-    ECS_DECLARE_COMPONENT(EcsPolygon8ColliderWorld);
-    ECS_DECLARE_COMPONENT(EcsCircleColliderWorld);
 } FlecsComponentsPhysics;
 
 void FlecsComponentsPhysicsImport(
@@ -89,12 +58,7 @@ void FlecsComponentsPhysicsImport(
     ECS_IMPORT_COMPONENT(handles, EcsAngularSpeed);\
     ECS_IMPORT_COMPONENT(handles, EcsAngularVelocity);\
     ECS_IMPORT_COMPONENT(handles, EcsBounciness);\
-    ECS_IMPORT_COMPONENT(handles, EcsFriction);\
-    ECS_IMPORT_COMPONENT(handles, EcsCollision2);\
-    ECS_IMPORT_COMPONENT(handles, EcsPolygon8Collider);\
-    ECS_IMPORT_COMPONENT(handles, EcsCircleCollider);\
-    ECS_IMPORT_COMPONENT(handles, EcsPolygon8ColliderWorld);\
-    ECS_IMPORT_COMPONENT(handles, EcsCircleColliderWorld);
+    ECS_IMPORT_COMPONENT(handles, EcsFriction);
 
 #ifdef __cplusplus
 }
@@ -113,29 +77,18 @@ public:
     using AngularVelocity = EcsAngularVelocity;
     using Bounciness = EcsBounciness;
     using Friction = EcsFriction;
-    using Collision2 = EcsCollision2;
-    using Polygon8Collider = EcsPolygon8Collider;
-    using CircleCollider = EcsCircleCollider;
-
-    struct Polygon8ColliderWorld : EcsPolygon8ColliderWorld { };
-    struct CircleColliderWorld : EcsCircleColliderWorld { };
 
     physics(flecs::world& ecs) {
         FlecsComponentsPhysicsImport(ecs.c_ptr());
 
         ecs.module<flecs::components::physics>();
 
-        ecs.component<Velocity2>("flecs::components::physics::Velocity2");
-        ecs.component<Velocity3>("flecs::components::physics::Velocity3");
-        ecs.component<AngularSpeed>("flecs::components::physics::AngularSpeed");
-        ecs.component<AngularVelocity>("flecs::components::physics::AngularVelocity");
-        ecs.component<Bounciness>("flecs::components::physics::Bounciness");
-        ecs.component<Friction>("flecs::components::physics::Friction");
-        ecs.component<Collision2>("flecs::components::physics::Collision2");
-        ecs.component<Polygon8Collider>("flecs::components::physics::Polygon8Collider");
-        ecs.component<CircleCollider>("flecs::components::physics::CircleCollider");
-        ecs.component<Polygon8ColliderWorld>("flecs::components::physics::Polygon8ColliderWorld");
-        ecs.component<CircleColliderWorld>("flecs::components::physics::CircleColliderWorld");
+        ecs.pod_component<Velocity2>("flecs::components::physics::Velocity2");
+        ecs.pod_component<Velocity3>("flecs::components::physics::Velocity3");
+        ecs.pod_component<AngularSpeed>("flecs::components::physics::AngularSpeed");
+        ecs.pod_component<AngularVelocity>("flecs::components::physics::AngularVelocity");
+        ecs.pod_component<Bounciness>("flecs::components::physics::Bounciness");
+        ecs.pod_component<Friction>("flecs::components::physics::Friction");
     }
 };
 
