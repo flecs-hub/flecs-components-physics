@@ -47,6 +47,7 @@ typedef struct FlecsComponentsPhysics {
     ECS_DECLARE_COMPONENT(EcsFriction);
 } FlecsComponentsPhysics;
 
+FLECS_COMPONENTS_PHYSICS_EXPORT
 void FlecsComponentsPhysicsImport(
     ecs_world_t *world);
 
