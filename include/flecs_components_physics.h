@@ -3,10 +3,6 @@
 
 #include <flecs-components-physics/bake_config.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 ECS_STRUCT(EcsVelocity2, {
     float x;
     float y;
@@ -35,6 +31,10 @@ ECS_STRUCT(EcsBounciness, {
 ECS_STRUCT(EcsFriction, {
     float value;
 });
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef struct FlecsComponentsPhysics {
     ECS_DECLARE_ENTITY(EcsCollider);
