@@ -6,7 +6,6 @@
         "description": "Physics components for flecs",
         "use": [
             "flecs",
-            "flecs.meta",
             "flecs.components.graphics"
         ]
     }

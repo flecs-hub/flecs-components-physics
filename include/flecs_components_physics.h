@@ -3,6 +3,12 @@
 
 #include <flecs-components-physics/bake_config.h>
 
+// Reflection system boilerplate
+#undef ECS_META_IMPL
+#ifndef flecs_components_physics_EXPORTS
+#define ECS_META_IMPL EXTERN // Ensure meta symbols are only defined once
+#endif
+
 ECS_STRUCT(EcsVelocity2, {
     float x;
     float y;
@@ -36,30 +42,9 @@ ECS_STRUCT(EcsFriction, {
 extern "C" {
 #endif
 
-typedef struct FlecsComponentsPhysics {
-    ECS_DECLARE_ENTITY(EcsCollider);
-    ECS_DECLARE_ENTITY(EcsRigidBody);    
-    ECS_DECLARE_COMPONENT(EcsVelocity2);
-    ECS_DECLARE_COMPONENT(EcsVelocity3);
-    ECS_DECLARE_COMPONENT(EcsAngularSpeed);
-    ECS_DECLARE_COMPONENT(EcsAngularVelocity);
-    ECS_DECLARE_COMPONENT(EcsBounciness);
-    ECS_DECLARE_COMPONENT(EcsFriction);
-} FlecsComponentsPhysics;
-
 FLECS_COMPONENTS_PHYSICS_API
 void FlecsComponentsPhysicsImport(
     ecs_world_t *world);
-
-#define FlecsComponentsPhysicsImportHandles(handles)\
-    ECS_IMPORT_ENTITY(handles, EcsCollider);\
-    ECS_IMPORT_ENTITY(handles, EcsRigidBody);\
-    ECS_IMPORT_COMPONENT(handles, EcsVelocity2);\
-    ECS_IMPORT_COMPONENT(handles, EcsVelocity3);\
-    ECS_IMPORT_COMPONENT(handles, EcsAngularSpeed);\
-    ECS_IMPORT_COMPONENT(handles, EcsAngularVelocity);\
-    ECS_IMPORT_COMPONENT(handles, EcsBounciness);\
-    ECS_IMPORT_COMPONENT(handles, EcsFriction);
 
 #ifdef __cplusplus
 }
@@ -80,7 +65,7 @@ public:
     using Friction = EcsFriction;
 
     physics(flecs::world& ecs) {
-        FlecsComponentsPhysicsImport(ecs.c_ptr());
+        FlecsComponentsPhysicsImport(ecs);
 
         ecs.module<flecs::components::physics>();
 
