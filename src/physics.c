@@ -1,6 +1,5 @@
+#define FLECS_COMPONENTS_PHYSICS_IMPL
 #include <flecs_components_physics.h>
-
-#include <string.h>
 
 void FlecsComponentsPhysicsImport(
     ecs_world_t *world)
