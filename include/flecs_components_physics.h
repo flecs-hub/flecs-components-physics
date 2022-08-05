@@ -10,6 +10,12 @@
 #endif
 
 FLECS_COMPONENTS_PHYSICS_API
+extern ECS_DECLARE(EcsCollider);
+
+FLECS_COMPONENTS_PHYSICS_API
+extern ECS_DECLARE(EcsRigidBody);
+
+FLECS_COMPONENTS_PHYSICS_API
 ECS_STRUCT(EcsVelocity2, {
     float x;
     float y;
@@ -57,11 +63,12 @@ void FlecsComponentsPhysicsImport(
 #endif
 
 #ifdef __cplusplus
+#ifndef FLECS_NO_CPP
 
 namespace flecs {
 namespace components {
 
-class physics : FlecsComponentsPhysics {
+class physics {
 public:
     using Velocity2 = EcsVelocity2;
     using Velocity3 = EcsVelocity3;
@@ -71,22 +78,24 @@ public:
     using Friction = EcsFriction;
 
     physics(flecs::world& ecs) {
+        // Load module contents
         FlecsComponentsPhysicsImport(ecs);
 
+        // Bind C++ types with module contents
         ecs.module<flecs::components::physics>();
-
-        ecs.pod_component<Velocity2>("flecs::components::physics::Velocity2");
-        ecs.pod_component<Velocity3>("flecs::components::physics::Velocity3");
-        ecs.pod_component<AngularSpeed>("flecs::components::physics::AngularSpeed");
-        ecs.pod_component<AngularVelocity>("flecs::components::physics::AngularVelocity");
-        ecs.pod_component<Bounciness>("flecs::components::physics::Bounciness");
-        ecs.pod_component<Friction>("flecs::components::physics::Friction");
+        ecs.component<Velocity2>();
+        ecs.component<Velocity3>();
+        ecs.component<AngularSpeed>();
+        ecs.component<AngularVelocity>();
+        ecs.component<Bounciness>();
+        ecs.component<Friction>();
     }
 };
 
 }
 }
 
+#endif
 #endif
 
 #endif
